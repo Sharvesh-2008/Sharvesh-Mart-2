@@ -1,0 +1,27 @@
+@startuml sequence-place-order
+!theme plain
+' Place-order flow through the layers (spec Section 2 / Section 5 D3).
+
+actor Browser
+participant "DispatcherServlet" as DS
+participant "OrderController" as OC
+participant "OrderService" as OS
+participant "OrderDAO" as ODAO
+participant "ProductDAO" as PDAO
+database "H2 Database" as DB
+
+Browser -> DS : POST /order (cart items, session user)
+DS -> OC : handle()
+OC -> OS : placeOrder(userId, cartItems)
+OS -> OS : validate input & stock (400 before DAO)
+OS -> PDAO : lockStock(productId, qty)
+PDAO -> DB : UPDATE products SET stock_qty = stock_qty - ? (PreparedStatement)
+DB --> PDAO : ok
+OS -> ODAO : insertOrder(order, orderItems)
+ODAO -> DB : INSERT orders + INSERT order_items (transaction)
+DB --> ODAO : orderId
+OS --> OC : OrderResponse (total, status)
+OC --> DS : "redirect:/orders/{id}"
+DS --> Browser : 302 Found -> order confirmation page
+
+@enduml

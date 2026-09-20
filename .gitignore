@@ -1,0 +1,21 @@
+# Compiled Java Output
+target/
+bin/
+*.class
+
+# SQLite & JSON Database Files
+saranyamart.db
+sharveshmart.db
+*.sqlite
+saranyamart_*.json
+sharveshmart_*.json
+data/
+
+# IDE Artifacts & Tools
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+tools/

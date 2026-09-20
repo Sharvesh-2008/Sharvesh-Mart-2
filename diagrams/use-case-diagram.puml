@@ -1,0 +1,43 @@
+@startuml use-case-diagram
+!theme plain
+left to right direction
+' Use cases for SaranyaMart from feature requirements F1-F8 (spec Section 1).
+' This diagram accompanies the Checkpoint 1 problem statement (spec Section 5).
+
+actor "Buyer" as buyer
+actor "Seller" as seller
+actor "Admin" as admin
+
+rectangle "SaranyaMart" {
+  usecase "Register" as UC1
+  usecase "Log in" as UC2
+  usecase "Browse / search products" as UC3
+  usecase "Manage cart" as UC4
+  usecase "Place order (mock payment)" as UC5
+  usecase "View order history" as UC6
+  usecase "Review & rate purchased products" as UC7
+  usecase "Create / edit / delete listings" as UC8
+  usecase "View incoming orders" as UC9
+  usecase "Manage users" as UC10
+  usecase "Moderate listings" as UC11
+  usecase "View all orders" as UC12
+}
+
+buyer  --> UC1
+seller --> UC1
+buyer  --> UC2
+seller --> UC2
+admin  --> UC2
+buyer  --> UC3
+buyer  --> UC4
+buyer  --> UC5
+buyer  --> UC6
+buyer  --> UC7
+seller --> UC8
+seller --> UC9
+seller --> UC6
+admin  --> UC10
+admin  --> UC11
+admin  --> UC12
+
+@enduml

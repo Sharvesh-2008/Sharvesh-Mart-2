@@ -1,0 +1,13 @@
+<nav class="topbar">
+    <a class="brand small" href="${pageContext.request.contextPath}/home">SHARVESHMART</a>
+    <a class="nav-link" href="${pageContext.request.contextPath}/products">Catalog</a>
+    <a class="nav-link" href="${pageContext.request.contextPath}/cart">Cart<c:if test="${cartCount > 0}"> (<c:out value="${cartCount}"/>)</c:if></a>
+    <a class="nav-link" href="${pageContext.request.contextPath}/orders">Orders</a>
+    <c:if test="${sessionScope.user.role == 'SELLER' || sessionScope.user.role == 'ADMIN'}">
+        <a class="nav-link" href="${pageContext.request.contextPath}/seller/orders">Seller orders</a>
+    </c:if>
+    <span class="spacer"></span>
+    <span class="muted small">Signed in as <c:out value="${sessionScope.user.email}"/></span>
+    <a class="role-badge" href="${pageContext.request.contextPath}/home"><c:out value="${sessionScope.user.role}"/></a>
+    <a class="btn ghost" href="${pageContext.request.contextPath}/logout">Sign out</a>
+</nav>

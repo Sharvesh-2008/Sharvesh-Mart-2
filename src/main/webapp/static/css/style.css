@@ -1,0 +1,387 @@
+/* SHARVESHMART — base stylesheet (Week 1 auth pages). */
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --bg: #f3f4f6;
+    --card: #ffffff;
+    --text: #111827;
+    --muted: #6b7280;
+    --error: #b91c1c;
+    --error-bg: #fef2f2;
+    --notice: #166534;
+    --notice-bg: #f0fdf4;
+    --border: #d1d5db;
+    --radius: 10px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+.auth-card {
+    max-width: 400px;
+    margin: 6vh auto;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem 2rem 1.5rem;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+.brand {
+    margin: 0;
+    font-size: 1.6rem;
+    color: var(--primary);
+    letter-spacing: 0.3px;
+}
+
+.brand.small {
+    font-size: 1.1rem;
+}
+
+.tagline {
+    margin: 0 0 1.25rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+h2 {
+    margin: 0.5rem 0 1rem;
+    font-size: 1.15rem;
+}
+
+form label {
+    display: block;
+    margin: 0.75rem 0 0.3rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 0.6rem 0.7rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    background: #fff;
+}
+
+input:focus,
+select:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 1px;
+}
+
+.btn {
+    display: inline-block;
+    width: 100%;
+    margin-top: 1.1rem;
+    padding: 0.65rem;
+    border: 1px solid var(--primary);
+    border-radius: 6px;
+    background: var(--primary);
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: var(--primary-dark);
+}
+
+.btn.ghost {
+    width: auto;
+    margin: 0 0 0 0.75rem;
+    padding: 0.4rem 0.9rem;
+    background: transparent;
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.error {
+    margin: 0 0 1rem;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid var(--error);
+    border-radius: 6px;
+    background: var(--error-bg);
+    color: var(--error);
+    font-size: 0.9rem;
+}
+
+.notice {
+    margin: 0 0 1rem;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid var(--notice);
+    border-radius: 6px;
+    background: var(--notice-bg);
+    color: var(--notice);
+    font-size: 0.9rem;
+}
+
+.muted {
+    color: var(--muted);
+}
+
+.small {
+    font-size: 0.8rem;
+}
+
+.muted a {
+    color: var(--primary);
+}
+
+.topbar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.9rem 1.4rem;
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+}
+
+.spacer {
+    flex: 1;
+}
+
+.role-badge {
+    padding: 0.2rem 0.7rem;
+    border-radius: 999px;
+    background: #e0e7ff;
+    color: #3730a3;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.content {
+    max-width: 900px;
+    margin: 2.5rem auto;
+    padding: 0 1.4rem;
+}
+
+.placeholder-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.placeholder-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.2rem;
+}
+
+.placeholder-card h3 {
+    margin: 0 0 0.35rem;
+    font-size: 0.95rem;
+}
+
+.placeholder-card h3 a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.placeholder-card h3 a:hover {
+    text-decoration: underline;
+}
+
+/* Week 2 catalog / cart / orders styles. */
+.nav-link {
+    padding: 0.3rem 0.5rem;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.9rem;
+    border-radius: 6px;
+}
+
+.nav-link:hover {
+    background: var(--bg);
+    color: var(--primary);
+}
+
+.filters {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.4rem;
+}
+
+.filters input[type="text"] {
+    flex: 1 1 220px;
+}
+
+.filters select {
+    flex: 0 1 220px;
+}
+
+.btn.small-btn {
+    width: auto;
+    margin-top: 0;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.85rem;
+}
+
+.btn.small-btn.ghost {
+    background: transparent;
+    color: var(--primary);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+.product-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.product-card h3 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.product-card h3 a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+.product-card h3 a:hover {
+    color: var(--primary);
+}
+
+.product-card .btn {
+    margin-top: auto;
+}
+
+.price {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.table th,
+.table td {
+    padding: 0.65rem 0.9rem;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+.table th {
+    background: #f9fafb;
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+.total {
+    margin: 1rem 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.inline-form,
+.qty-form {
+    margin: 0;
+}
+
+.inline-form {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.qty-input {
+    width: 5rem;
+    padding: 0.35rem 0.4rem;
+}
+
+.qty-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 0.3rem;
+}
+
+.qty-row input {
+    width: 6rem;
+}
+
+.status {
+    display: inline-block;
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    background: #e0e7ff;
+    color: #3730a3;
+}
+
+.status.CONFIRMED {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.status.PENDING {
+    background: #fef3c7;
+    color: #b45309;
+}
+
+.status.CANCELLED {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.confirmation {
+    margin-bottom: 1rem;
+}
+
+.confirm-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 400;
+}
+
+.confirm-label input {
+    width: auto;
+}

@@ -1,0 +1,74 @@
+@startuml er-diagram
+!theme plain
+skinparam linetype ortho
+hide circle
+' Entities and relationships for SaranyaMart schema v1 (spec Section 4).
+
+entity "users" as users {
+  * id : INTEGER PK
+  --
+  * name : VARCHAR(100)
+  * email : VARCHAR(255) UNIQUE
+  * password_hash : VARCHAR(60)
+  * role : ENUM(BUYER,SELLER,ADMIN)
+  * created_at : TIMESTAMP
+}
+
+entity "products" as products {
+  * id : INTEGER PK
+  --
+  * seller_id : INTEGER FK
+  * name : VARCHAR(200)
+  description : CLOB
+  * price : DECIMAL(10,2)
+  * stock_qty : INTEGER
+  category : VARCHAR(100)
+  * created_at : TIMESTAMP
+}
+
+entity "orders" as orders {
+  * id : INTEGER PK
+  --
+  * buyer_id : INTEGER FK
+  * status : ENUM(PENDING,CONFIRMED,SHIPPED,DELIVERED,CANCELLED)
+  * total_amount : DECIMAL(10,2)
+  * created_at : TIMESTAMP
+}
+
+entity "order_items" as order_items {
+  * id : INTEGER PK
+  --
+  * order_id : INTEGER FK
+  * product_id : INTEGER FK
+  * quantity : INTEGER
+  * unit_price : DECIMAL(10,2)
+}
+
+entity "cart_items" as cart_items {
+  * id : INTEGER PK
+  --
+  * user_id : INTEGER FK
+  * product_id : INTEGER FK
+  * quantity : INTEGER
+}
+
+entity "reviews" as reviews {
+  * id : INTEGER PK
+  --
+  * product_id : INTEGER FK
+  * user_id : INTEGER FK
+  * rating : INTEGER (1..5)
+  comment : VARCHAR(1000)
+  * created_at : TIMESTAMP
+}
+
+users ||--o{ products   : "lists (seller)"
+users ||--o{ orders     : "places (buyer)"
+orders ||--|{ order_items : "contains"
+products ||--o{ order_items : "appears in"
+users ||--o{ cart_items : "owns"
+products ||--o{ cart_items : "in cart"
+users ||--o{ reviews    : "writes"
+products ||--o{ reviews  : "receives"
+
+@enduml
