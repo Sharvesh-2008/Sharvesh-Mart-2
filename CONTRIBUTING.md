@@ -1,4 +1,4 @@
-﻿# Contributing to SHARVESHMART
+# Contributing to SHARVESHMART
 
 Exact steps from `git clone` to a running local instance.
 
@@ -40,7 +40,7 @@ This runs unit + DAO tests, Checkstyle, and SpotBugs.
 
 ```bash
 mvn -B clean package
-cp target/SHARVESHMART.war <TOMCAT_HOME>/webapps/
+cp target/SharveshMart.war <TOMCAT_HOME>/webapps/
 <TOMCAT_HOME>/bin/startup.sh
 ```
 

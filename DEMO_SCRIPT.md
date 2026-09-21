@@ -1,4 +1,4 @@
-﻿# SHARVESHMART — Rehearsed Evaluation Demo Script
+# SHARVESHMART — Rehearsed Evaluation Demo Script
 **Duration**: 2 – 3 Minutes  
 **Target Audience**: Faculty Evaluation Panel / Reviewers  
 **Application URL**: `http://localhost:8080`
@@ -17,7 +17,7 @@
 2. Point out the avatar update in the top right corner.
 3. Click **"Add to Cart"** on *High Performance Laptop*.
 4. Open the **Shopping Cart Modal** icon in header.
-5. Apply promo coupon code `SARANYA10` and point out the 10% discount deduction (-₹4,500).
+5. Apply promo coupon code `SHARVESH10` and point out the 10% discount deduction (-₹4,500).
 6. Click **"Proceed to Checkout"**, enter shipping address *"123 Anna Salai, Chennai"*, and click **"Confirm Order Now"**.
 7. Open **"My Order History"** and click **"Print / Save as PDF Invoice"** to display the GST invoice.
 

@@ -1,14 +1,14 @@
 @startuml use-case-diagram
 !theme plain
 left to right direction
-' Use cases for SaranyaMart from feature requirements F1-F8 (spec Section 1).
+' Use cases for SharveshMart from feature requirements F1-F8 (spec Section 1).
 ' This diagram accompanies the Checkpoint 1 problem statement (spec Section 5).
 
 actor "Buyer" as buyer
 actor "Seller" as seller
 actor "Admin" as admin
 
-rectangle "SaranyaMart" {
+rectangle "SharveshMart" {
   usecase "Register" as UC1
   usecase "Log in" as UC2
   usecase "Browse / search products" as UC3

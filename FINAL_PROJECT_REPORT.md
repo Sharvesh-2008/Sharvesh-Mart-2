@@ -1,7 +1,7 @@
-﻿# SHARVESHMART — Final Technical Project Report
+# SHARVESHMART — Final Technical Project Report
 **Anna University R2025 Specification Capstone Deliverable (Checkpoint Window: Jul 27 – Oct 10, 2026)**  
-**Developer & Maintainer**: rssaranya1947  
-**Repository**: [https://github.com/rssaranya1947/SHARVESHMART](https://github.com/rssaranya1947/SHARVESHMART)
+**Developer & Maintainer**: rssharvesh1947  
+**Repository**: [https://github.com/rssharvesh1947/SHARVESHMART](https://github.com/rssharvesh1947/SHARVESHMART)
 
 ---
 

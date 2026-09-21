@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <FindBugsFilter>
     <!--
       SHARVESHMART SpotBugs exclusions.
@@ -16,7 +16,7 @@
     </Match>
     <Match>
         <!-- Servlets are container-managed singletons and are never serialized. -->
-        <Class name="com.saranya.saranyamart.controller.DispatcherServlet"/>
+        <Class name="com.sharvesh.sharvesh_mart.controller.DispatcherServlet"/>
         <Bug pattern="SE_BAD_FIELD"/>
     </Match>
     <Match>

@@ -1,4 +1,4 @@
-﻿# Changelog
+# Changelog
 
 All notable changes to SHARVESHMART. One line per release (spec Section 15.5).
 

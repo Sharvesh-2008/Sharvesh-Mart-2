@@ -8,7 +8,7 @@
 
     <!-- Owns the HikariCP pool lifecycle (spec Section 2). -->
     <listener>
-        <listener-class>com.saranya.saranyamart.listener.AppContextListener</listener-class>
+        <listener-class>com.sharvesh.sharvesh_mart.listener.AppContextListener</listener-class>
     </listener>
 
     <!-- Explicit session timeout (spec Section 4 rule 3). -->
@@ -19,7 +19,7 @@
     <!-- Filter order: request id, encoding, then auth. -->
     <filter>
         <filter-name>requestIdFilter</filter-name>
-        <filter-class>com.saranya.saranyamart.filter.RequestIdFilter</filter-class>
+        <filter-class>com.sharvesh.sharvesh_mart.filter.RequestIdFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>requestIdFilter</filter-name>
@@ -28,7 +28,7 @@
 
     <filter>
         <filter-name>encodingFilter</filter-name>
-        <filter-class>com.saranya.saranyamart.filter.EncodingFilter</filter-class>
+        <filter-class>com.sharvesh.sharvesh_mart.filter.EncodingFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>encodingFilter</filter-name>
@@ -37,7 +37,7 @@
 
     <filter>
         <filter-name>authFilter</filter-name>
-        <filter-class>com.saranya.saranyamart.filter.AuthFilter</filter-class>
+        <filter-class>com.sharvesh.sharvesh_mart.filter.AuthFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>authFilter</filter-name>
@@ -47,7 +47,7 @@
     <!-- Front Controller (spec Section 2). -->
     <servlet>
         <servlet-name>dispatcherServlet</servlet-name>
-        <servlet-class>com.saranya.saranyamart.controller.DispatcherServlet</servlet-class>
+        <servlet-class>com.sharvesh.sharvesh_mart.controller.DispatcherServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>

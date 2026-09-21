@@ -1,4 +1,4 @@
-﻿# SHARVESHMART — Multi-Seller E-Commerce Marketplace Platform
+# SHARVESHMART — Multi-Seller E-Commerce Marketplace Platform
 
 
 
@@ -88,8 +88,8 @@ erDiagram
 
 | Pattern | Implementation Location | Purpose & Architectural Usage |
 | :--- | :--- | :--- |
-| **DAO (Data Access Object)** | `com.SHARVESHMART.dao.*` (`UserDao`, `ProductDao`, `OrderDao`, `ReviewDao`, `CouponDao`, `MessageDao`) | Abstraction separating business logic from direct data storage operations. |
-| **Front Controller** | `com.SHARVESHMART.controller.*` (`AuthController`, `ProductController`, `OrderController`, `ChatController`, `HealthController`) | Centralized dispatch entry points orchestrating HTTP request processing, JSON mapping, and response envelopes. |
+| **DAO (Data Access Object)** | `com.sharvesh_mart.dao.*` (`UserDao`, `ProductDao`, `OrderDao`, `ReviewDao`, `CouponDao`, `MessageDao`) | Abstraction separating business logic from direct data storage operations. |
+| **Front Controller** | `com.sharvesh_mart.controller.*` (`AuthController`, `ProductController`, `OrderController`, `ChatController`, `HealthController`) | Centralized dispatch entry points orchestrating HTTP request processing, JSON mapping, and response envelopes. |
 | **Singleton** | `DatabaseManager` (`ServletContextListener` lifecycle) | Global thread-safe instance managing data persistence and ID sequence generation. |
 | **Factory** | `DatabaseManager` seeders & DAO instantiation | Instantiates data transfer objects, pre-seeded test accounts, and model entities. |
 | **Strategy Pattern** | `ChatProvider` (`MockChatProvider` vs. `GeminiChatProvider`) | Swappable AI chatbot provider strategy dispatched dynamically based on configuration property `ai.chatbot.provider`. |
@@ -145,7 +145,7 @@ All API endpoints strictly follow the standard fixed envelope format:
 - [x] **Week 3 – Seller Dashboard (Part 1)**: Listing creation, stock quantity configuration, and inventory value calculation.
 - [x] **Week 4 – Seller Dashboard & Admin Controls**: Full listing edit/delete, order fulfillment tracking, user administration, and product moderation.
 - [x] **Week 5 – Search, Category Filters & Wishlist**: Real-time keyword search, category tabs, price range filters, and wishlist bookmarking.
-- [x] **Week 6 – Reviews, Ratings & GST Invoices**: 5-star customer reviews, average rating calculation, promo coupons (`SARANYA10`), and printable PDF invoices.
+- [x] **Week 6 – Reviews, Ratings & GST Invoices**: 5-star customer reviews, average rating calculation, promo coupons (`SHARVESH10`), and printable PDF invoices.
 - [x] **Week 7 – In-App Messaging & Seller Storefronts**: Direct product inquiries between buyers and sellers, custom seller storefront pages.
 - [x] **Week 8 – Testing Suite, Security Checklist & CI Pipeline**:
   - Created JUnit 5 unit & DAO test suites (`UserDaoTest`, `ProductDaoTest`, `ChatServiceTest`).

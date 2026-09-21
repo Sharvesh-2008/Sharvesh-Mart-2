@@ -2,7 +2,7 @@
 !theme plain
 skinparam linetype ortho
 hide circle
-' Entities and relationships for SaranyaMart schema v1 (spec Section 4).
+' Entities and relationships for SharveshMart schema v1 (spec Section 4).
 
 entity "users" as users {
   * id : INTEGER PK

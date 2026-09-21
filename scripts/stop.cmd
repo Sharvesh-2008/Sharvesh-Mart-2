@@ -1,7 +1,7 @@
 @echo off
 setlocal
 REM =====================================================================
-REM SaranyaMart - stop the portable Tomcat instance.
+REM SharveshMart - stop the portable Tomcat instance.
 REM =====================================================================
 
 set "ROOT=%~dp0.."

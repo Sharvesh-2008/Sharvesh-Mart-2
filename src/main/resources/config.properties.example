@@ -1,7 +1,7 @@
-# SaranyaMart local configuration template.
+# SharveshMart local configuration template.
 # Copy this file to src/main/resources/config.properties (gitignored) and edit.
 # Environment variables (see .env.example) take precedence over these values.
-jdbc.url=jdbc:h2:file:./data/saranyamart
+jdbc.url=jdbc:h2:file:./data/sharvesh_mart
 jdbc.username=sa
 jdbc.password=
 db.pool.size=10

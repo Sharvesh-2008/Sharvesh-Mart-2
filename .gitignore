@@ -4,11 +4,11 @@ bin/
 *.class
 
 # SQLite & JSON Database Files
-saranyamart.db
-sharveshmart.db
+sharvesh_mart.db
+SharveshMart.db
 *.sqlite
-saranyamart_*.json
-sharveshmart_*.json
+sharvesh_mart_*.json
+SharveshMart_*.json
 data/
 
 # IDE Artifacts & Tools
@@ -19,3 +19,4 @@ data/
 .classpath
 .project
 tools/
+.omo/

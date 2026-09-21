@@ -1,5 +1,5 @@
 -- =====================================================================
--- SaranyaMart — Database schema v1
+-- SharveshMart â€” Database schema v1
 -- Anna University R2025 Sem3 JAVA Capstone (Week 1, Aug 2 2026)
 --
 -- Design rules (spec Section 4):

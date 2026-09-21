@@ -1,6 +1,6 @@
-﻿# SHARVESHMART — Capstone Review Slide Deck
+# SHARVESHMART — Capstone Review Slide Deck
 **Anna University R2025 Specification Checkpoint Review**  
-**Presenter & Developer**: rssaranya1947  
+**Presenter & Developer**: rssharvesh1947  
 **Live Application URL**: `http://localhost:8080`
 
 ---
@@ -20,7 +20,7 @@
 - Modern e-commerce platforms require seamless multi-seller listing management, role-based authorization, instant catalog filtering, security compliance, and real-time customer support.
 
 ### Scope Boundaries (Per Specification)
-- **Included**: Buyer/Seller/Admin authentication, product CRUD, coupon engine (`SARANYA10`), printable invoices, security headers, unit testing suite, CI pipeline, and AI Chatbot widget (Phase 3).
+- **Included**: Buyer/Seller/Admin authentication, product CRUD, coupon engine (`SHARVESH10`), printable invoices, security headers, unit testing suite, CI pipeline, and AI Chatbot widget (Phase 3).
 - **Excluded**: Real-time WebSockets, external mapping APIs, real payment gateways.
 
 ---

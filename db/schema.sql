@@ -1,4 +1,4 @@
--- SaranyaMart Complete Database Schema (Weeks 1-4)
+-- SharveshMart Complete Database Schema (Weeks 1-4)
 
 -- 1. Users Table
 CREATE TABLE IF NOT EXISTS users (
