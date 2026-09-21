@@ -94,10 +94,15 @@
             </resource>
         </resources>
         <plugins>
-            <!-- Spring Boot Executable JAR Plugin -->
+            <!-- Spring Boot Executable JAR Plugin (layered for Docker) -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <layers>
+                        <enabled>true</enabled>
+                    </layers>
+                </configuration>
             </plugin>
         </plugins>
     </build>
