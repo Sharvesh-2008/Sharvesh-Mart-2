@@ -1,0 +1,15 @@
+{
+  "name": "sharveshmart-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SharveshMart Frontend - Vanilla SPA (HTML/CSS/JS)",
+  "scripts": {
+    "start": "serve -s . -l $PORT"
+  },
+  "dependencies": {
+    "serve": "^14.2.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,6 +1,4 @@
-/**
- * SHARVESHMART Client-Side Web Engine - Weeks 1 to 7 Complete
- */
+const apiUrl = (p) => (window.apiUrl ? window.apiUrl(p) : p);
 class SHARVESHMARTApp {
     constructor() {
         this.currentUser = null;
@@ -18,7 +16,7 @@ class SHARVESHMARTApp {
         // Multi-Currency & Coupon State
         this.currency = 'INR';
         this.rates = { INR: 1.0, USD: 0.012, EUR: 0.011 };
-        this.symbols = { INR: '₹', USD: '$', EUR: '€' };
+        this.symbols = { INR: 'ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¹', USD: '$', EUR: 'ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬' };
         this.appliedCoupon = null;
 
         // Theme State (Week 7)
@@ -99,9 +97,9 @@ class SHARVESHMARTApp {
 
     // MULTI-CURRENCY CONVERSION HELPER
     formatPrice(amountInINR) {
-        if (amountInINR === null || amountInINR === undefined) return '₹0';
+        if (amountInINR === null || amountInINR === undefined) return 'ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¹0';
         const rate = this.rates[this.currency] || 1.0;
-        const sym = this.symbols[this.currency] || '₹';
+        const sym = this.symbols[this.currency] || 'ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¹';
         const converted = amountInINR * rate;
         if (this.currency === 'INR') {
             return `${sym}${Math.round(converted).toLocaleString('en-IN')}`;
@@ -185,7 +183,7 @@ class SHARVESHMARTApp {
         btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Registering...';
 
         try {
-            const response = await fetch('/api/register', {
+            const response = await fetch(apiUrl('/api/register'), {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ fullName, email, password, role })
@@ -223,7 +221,7 @@ class SHARVESHMARTApp {
         btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Logging in...';
 
         try {
-            const response = await fetch('/api/login', {
+            const response = await fetch(apiUrl('/api/login'), {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password })
@@ -292,7 +290,7 @@ class SHARVESHMARTApp {
         grid.innerHTML = '<div class="text-center" style="grid-column: 1/-1; padding: 2rem;"><i class="fa-solid fa-spinner fa-spin fa-2x"></i><p>Loading Products...</p></div>';
 
         try {
-            let url = `/api/products?category=${encodeURIComponent(this.currentCategory)}`;
+            let url = apiUrl(`/api/products?category=${encodeURIComponent(this.currentCategory)}`);
             if (this.searchQuery) url += `&search=${encodeURIComponent(this.searchQuery)}`;
             if (this.minPrice !== null && this.minPrice !== '') url += `&minPrice=${this.minPrice}`;
             if (this.maxPrice !== null && this.maxPrice !== '') url += `&maxPrice=${this.maxPrice}`;
@@ -405,7 +403,7 @@ class SHARVESHMARTApp {
         modal.classList.remove('hidden');
 
         try {
-            const res = await fetch(`/api/products/seller/${sellerId}`);
+            const res = await fetch(apiUrl(`/api/products/seller/${sellerId}`));
             const data = await res.json();
 
             if (data.success && data.products) {
@@ -493,7 +491,7 @@ class SHARVESHMARTApp {
         };
 
         try {
-            const response = await fetch('/api/messages', {
+            const response = await fetch(apiUrl('/api/messages'), {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
@@ -518,7 +516,7 @@ class SHARVESHMARTApp {
         document.getElementById('messages-modal').classList.remove('hidden');
 
         try {
-            const response = await fetch(`/api/messages/user/${this.currentUser.id}`);
+            const response = await fetch(apiUrl(`/api/messages/user/${this.currentUser.id}`));
             const messages = await response.json();
 
             list.innerHTML = '';
@@ -532,7 +530,7 @@ class SHARVESHMARTApp {
                 card.className = 'review-card';
                 card.innerHTML = `
                     <div class="review-header">
-                        <span class="review-author"><i class="fa-solid fa-circle-user"></i> ${m.senderName} ➔ ${m.recipientName}</span>
+                        <span class="review-author"><i class="fa-solid fa-circle-user"></i> ${m.senderName} ÃƒÆ’Ã‚Â¢Ãƒâ€¦Ã‚Â¾ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ${m.recipientName}</span>
                         <span class="review-date">${m.createdAt || 'Recent'}</span>
                     </div>
                     <div style="font-size:0.8rem; color:#818cf8; font-weight:700; margin-bottom:0.35rem;">Re: ${m.productTitle}</div>
@@ -557,7 +555,7 @@ class SHARVESHMARTApp {
             this.showToast('Removed item from Wishlist.', 'info');
         } else {
             this.wishlist.push(productId);
-            this.showToast('Added item to Wishlist ♥', 'success');
+            this.showToast('Added item to Wishlist ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢Ãƒâ€šÃ‚Â¥', 'success');
         }
 
         localStorage.setItem('sm_wishlist', JSON.stringify(this.wishlist));
@@ -638,7 +636,7 @@ class SHARVESHMARTApp {
         document.getElementById('review-comment').value = '';
 
         try {
-            const res = await fetch(`/api/reviews/product/${productId}`);
+            const res = await fetch(apiUrl(`/api/reviews/product/${productId}`));
             const reviews = await res.json();
             this.renderReviewsList(reviews);
         } catch (e) {
@@ -684,7 +682,7 @@ class SHARVESHMARTApp {
         };
 
         try {
-            const response = await fetch('/api/reviews', {
+            const response = await fetch(apiUrl('/api/reviews'), {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
@@ -787,7 +785,7 @@ class SHARVESHMARTApp {
         }
 
         try {
-            const response = await fetch('/api/coupons/apply', {
+            const response = await fetch(apiUrl('/api/coupons/apply'), {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ code, orderTotal: subtotal })
@@ -833,7 +831,7 @@ class SHARVESHMARTApp {
             row.innerHTML = `
                 <div class="cart-item-info">
                     <div class="cart-item-title">${item.title}</div>
-                    <div class="cart-item-price">${this.formatPrice(item.price)} × ${item.quantity} = ${this.formatPrice(itemSub)}</div>
+                    <div class="cart-item-price">${this.formatPrice(item.price)} ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â ${item.quantity} = ${this.formatPrice(itemSub)}</div>
                     <div style="font-size: 0.75rem; color: var(--text-muted);">Seller: ${item.sellerName}</div>
                 </div>
                 <div class="cart-qty-ctrl">
@@ -942,7 +940,7 @@ class SHARVESHMARTApp {
         btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Confirming Order...';
 
         try {
-            const response = await fetch('/api/orders/checkout', {
+            const response = await fetch(apiUrl('/api/orders/checkout'), {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(orderPayload)
@@ -983,7 +981,7 @@ class SHARVESHMARTApp {
         container.innerHTML = '<p class="text-center"><i class="fa-solid fa-spinner fa-spin"></i> Loading Order History...</p>';
 
         try {
-            const response = await fetch(`/api/orders/buyer/${this.currentUser.id}`);
+            const response = await fetch(apiUrl(`/api/orders/buyer/${this.currentUser.id}`));
             const data = await response.json();
 
             if (data.success && data.orders) {
@@ -1014,7 +1012,7 @@ class SHARVESHMARTApp {
                         <div style="font-size: 0.9rem; margin-bottom: 0.75rem;">
                             <strong>Items (${o.items ? o.items.length : 0}):</strong>
                             <ul style="padding-left: 1.25rem; color: var(--text-muted);">
-                                ${o.items ? o.items.map(i => `<li>${i.title} × ${i.quantity} (${this.formatPrice(i.price)})</li>`).join('') : ''}
+                                ${o.items ? o.items.map(i => `<li>${i.title} ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â ${i.quantity} (${this.formatPrice(i.price)})</li>`).join('') : ''}
                             </ul>
                         </div>
                         <div style="font-size: 1.1rem; font-weight: 800; color: var(--secondary);">
@@ -1109,7 +1107,7 @@ class SHARVESHMARTApp {
     async cancelOrder(orderId) {
         if (!confirm('Are you sure you want to cancel this order? Item stock will be automatically restored.')) return;
         try {
-            const response = await fetch(`/api/orders/${orderId}/cancel`, { method: 'PUT' });
+            const response = await fetch(apiUrl(`/api/orders/${orderId}/cancel`), { method: 'PUT' });
             const data = await response.json();
             if (data.success) {
                 this.showToast(data.message, 'success');
@@ -1128,7 +1126,7 @@ class SHARVESHMARTApp {
         if (!this.currentUser) return;
 
         try {
-            const prodRes = await fetch(`/api/products/seller/${this.currentUser.id}`);
+            const prodRes = await fetch(apiUrl(`/api/products/seller/${this.currentUser.id}`));
             const prodData = await prodRes.json();
 
             if (prodData.success && prodData.products) {
@@ -1163,7 +1161,7 @@ class SHARVESHMARTApp {
                 document.getElementById('seller-stat-value').textContent = this.formatPrice(totalValue);
             }
 
-            const orderRes = await fetch(`/api/orders/seller/${this.currentUser.id}`);
+            const orderRes = await fetch(apiUrl(`/api/orders/seller/${this.currentUser.id}`));
             const orderData = await orderRes.json();
 
             if (orderData.success && orderData.orders) {
@@ -1176,7 +1174,7 @@ class SHARVESHMARTApp {
                     tr.innerHTML = `
                         <td>#${o.id}</td>
                         <td><strong>${o.buyerName}</strong><br><small style="color:var(--text-muted);">${o.buyerEmail}</small></td>
-                        <td>${o.items ? o.items.map(i => `${i.title} (×${i.quantity})`).join(', ') : ''}</td>
+                        <td>${o.items ? o.items.map(i => `${i.title} (ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â${i.quantity})`).join(', ') : ''}</td>
                         <td class="text-emerald">${this.formatPrice(o.totalAmount)}</td>
                         <td>${o.orderDate || 'Recent'}</td>
                         <td>
@@ -1204,7 +1202,7 @@ class SHARVESHMARTApp {
         const payload = { ...prod, stockQuantity: newStock };
 
         try {
-            const response = await fetch(`/api/products/${productId}`, {
+            const response = await fetch(apiUrl(`/api/products/${productId}`), {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
@@ -1291,7 +1289,7 @@ class SHARVESHMARTApp {
     async deleteProductSeller(productId) {
         if (!confirm('Are you sure you want to delete this product listing?')) return;
         try {
-            const response = await fetch(`/api/products/${productId}`, { method: 'DELETE' });
+            const response = await fetch(apiUrl(`/api/products/${productId}`), { method: 'DELETE' });
             const data = await response.json();
             if (data.success) {
                 this.showToast(data.message, 'success');
@@ -1305,7 +1303,7 @@ class SHARVESHMARTApp {
 
     async updateOrderStatusSeller(orderId, newStatus) {
         try {
-            const response = await fetch(`/api/orders/${orderId}/status`, {
+            const response = await fetch(apiUrl(`/api/orders/${orderId}/status`), {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ status: newStatus })
@@ -1322,7 +1320,7 @@ class SHARVESHMARTApp {
     // ADMIN DASHBOARD & CSV REPORT EXPORT
     async loadAdminData() {
         try {
-            const userRes = await fetch('/api/users');
+            const userRes = await fetch(apiUrl('/api/users'));
             const userData = await userRes.json();
 
             if (userData.success && userData.users) {
@@ -1351,7 +1349,7 @@ class SHARVESHMARTApp {
                 document.getElementById('admin-total-buyers').textContent = buyers;
             }
 
-            const orderRes = await fetch('/api/orders');
+            const orderRes = await fetch(apiUrl('/api/orders'));
             const orderData = await orderRes.json();
 
             if (orderData.success && orderData.orders) {
@@ -1376,7 +1374,7 @@ class SHARVESHMARTApp {
                 });
             }
 
-            const prodRes = await fetch('/api/products?admin=true');
+            const prodRes = await fetch(apiUrl('/api/products?admin=true'));
             const prodData = await prodRes.json();
 
             if (prodData.success && prodData.products) {
@@ -1462,7 +1460,7 @@ class SHARVESHMARTApp {
     async adminRemoveProduct(productId) {
         if (!confirm('Admin Action: Remove this inappropriate product from platform?')) return;
         try {
-            const response = await fetch(`/api/products/${productId}`, { method: 'DELETE' });
+            const response = await fetch(apiUrl(`/api/products/${productId}`), { method: 'DELETE' });
             const data = await response.json();
             if (data.success) {
                 this.showToast('Product removed by Admin.', 'success');
@@ -1548,7 +1546,7 @@ class SHARVESHMARTApp {
         if (tabBtn) {
             this.selectCategory(categoryName, tabBtn);
         }
-        this.renderChatMessage(`🔍 Filtering marketplace products for **${categoryName}**...`, 'bot');
+        this.renderChatMessage(`ÃƒÆ’Ã‚Â°Ãƒâ€¦Ã‚Â¸ÃƒÂ¢Ã¢â€šÂ¬Ã‚ÂÃƒâ€šÃ‚Â Filtering marketplace products for **${categoryName}**...`, 'bot');
         this.showToast(`Catalog filtered by category: ${categoryName}`, 'success');
     }
 
@@ -1559,17 +1557,17 @@ class SHARVESHMARTApp {
         body.innerHTML = `
             <div class="chat-message bot">
                 <div class="msg-bubble">
-                    👋 Hi! I'm your <strong>SHARVESHMART AI Assistant</strong>. Conversation cleared. How can I help you?
+                    ÃƒÆ’Ã‚Â°Ãƒâ€¦Ã‚Â¸ÃƒÂ¢Ã¢â€šÂ¬Ã‹Å“ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¹ Hi! I'm your <strong>SHARVESHMART AI Assistant</strong>. Conversation cleared. How can I help you?
                     <div class="msg-time">Just now</div>
                 </div>
             </div>
             <div class="chat-chips-container" id="chat-quick-chips">
-                <button class="chat-chip" onclick="app.triggerCategoryFromChat('Laptop')">💻 Browse Laptops</button>
-                <button class="chat-chip" onclick="app.triggerCategoryFromChat('Mobile')">📱 Browse Mobiles</button>
-                <button class="chat-chip" onclick="app.sendQuickChat('What is your return policy?')">🔄 Return Policy</button>
-                <button class="chat-chip" onclick="app.sendQuickChat('How long does shipping take?')">🚚 Shipping Info</button>
-                <button class="chat-chip" onclick="app.sendQuickChat('What payment methods are supported?')">💳 Payments</button>
-                <button class="chat-chip" onclick="app.sendQuickChat('How do I apply a coupon code?')">🎟️ Promo Coupons</button>
+                <button class="chat-chip" onclick="app.triggerCategoryFromChat('Laptop')">ÃƒÆ’Ã‚Â°Ãƒâ€¦Ã‚Â¸ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢Ãƒâ€šÃ‚Â» Browse Laptops</button>
+                <button class="chat-chip" onclick="app.triggerCategoryFromChat('Mobile')">ÃƒÆ’Ã‚Â°Ãƒâ€¦Ã‚Â¸ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œÃƒâ€šÃ‚Â± Browse Mobiles</button>
+                <button class="chat-chip" onclick="app.sendQuickChat('What is your return policy?')">ÃƒÆ’Ã‚Â°Ãƒâ€¦Ã‚Â¸ÃƒÂ¢Ã¢â€šÂ¬Ã‚ÂÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾ Return Policy</button>
+                <button class="chat-chip" onclick="app.sendQuickChat('How long does shipping take?')">ÃƒÆ’Ã‚Â°Ãƒâ€¦Ã‚Â¸Ãƒâ€¦Ã‚Â¡Ãƒâ€¦Ã‚Â¡ Shipping Info</button>
+                <button class="chat-chip" onclick="app.sendQuickChat('What payment methods are supported?')">ÃƒÆ’Ã‚Â°Ãƒâ€¦Ã‚Â¸ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢Ãƒâ€šÃ‚Â³ Payments</button>
+                <button class="chat-chip" onclick="app.sendQuickChat('How do I apply a coupon code?')">ÃƒÆ’Ã‚Â°Ãƒâ€¦Ã‚Â¸Ãƒâ€¦Ã‚Â½Ãƒâ€¦Ã‚Â¸ÃƒÆ’Ã‚Â¯Ãƒâ€šÃ‚Â¸Ãƒâ€šÃ‚Â Promo Coupons</button>
             </div>
         `;
         this.showToast('Chat history reset.', 'info');
@@ -1596,7 +1594,7 @@ class SHARVESHMARTApp {
         this.scrollChatToBottom();
 
         try {
-            const response = await fetch('/api/chat', {
+            const response = await fetch(apiUrl('/api/chat'), {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ message: messageText })
@@ -1615,13 +1613,13 @@ class SHARVESHMARTApp {
 
                 this.renderChatMessage(reply, 'bot');
             } else if (data.error && data.error.message) {
-                this.renderChatMessage(`⚠️ ${data.error.message}`, 'bot');
+                this.renderChatMessage(`ÃƒÆ’Ã‚Â¢Ãƒâ€¦Ã‚Â¡Ãƒâ€šÃ‚Â ÃƒÆ’Ã‚Â¯Ãƒâ€šÃ‚Â¸Ãƒâ€šÃ‚Â ${data.error.message}`, 'bot');
             } else {
-                this.renderChatMessage("🤖 I am here to help! Please try asking another question.", 'bot');
+                this.renderChatMessage("ÃƒÆ’Ã‚Â°Ãƒâ€¦Ã‚Â¸Ãƒâ€šÃ‚Â¤ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“ I am here to help! Please try asking another question.", 'bot');
             }
         } catch (error) {
             if (typing) typing.classList.add('hidden');
-            this.renderChatMessage("🤖 *SHARVESHMART Assistant*: Our AI service is operating in offline mode. Feel free to ask about return policies or shipping!", 'bot');
+            this.renderChatMessage("ÃƒÆ’Ã‚Â°Ãƒâ€¦Ã‚Â¸Ãƒâ€šÃ‚Â¤ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“ *SHARVESHMART Assistant*: Our AI service is operating in offline mode. Feel free to ask about return policies or shipping!", 'bot');
         }
     }
 

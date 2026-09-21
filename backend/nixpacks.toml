@@ -1,0 +1,33 @@
+# SharveshMart - Nixpacks plan for Railway (faster cold builds via layer caching)
+# Docs: https://nixpacks.com/docs/configuration/file
+
+providers = ["java"]
+
+[phases.setup]
+# Pin JDK 17 (matches pom.xml java.version 17, parent 2.7.18)
+nixPkgs = ["jdk17", "maven"]
+# Auto-set by nixpacks, but explicit for clarity
+nixOverlays = []
+
+[phases.install]
+# Cache all Maven deps before copying source changes (huge cache hit on redeploys)
+cmds = ["mvn -B -DskipTests dependency:go-offline"]
+# Only re-run when pom.xml changes
+dependsOn = ["setup"]
+cacheDirectories = ["/root/.m2"]
+
+[phases.build]
+cmds = ["mvn -B -T 1C -DskipTests clean package -Dmaven.test.skip=true"]
+dependsOn = ["install"]
+cacheDirectories = ["/root/.m2", "target"]
+
+[variables]
+# Injected at build time
+NIXPACKS_JDK_VERSION = "17"
+MAVEN_OPTS = "-Xmx1024m -Dmaven.test.skip=true"
+# Runtime heap is set in railway.toml startCommand; this is fallback
+JAVA_TOOL_OPTIONS = "-Xms128m -Xmx512m -XX:+UseContainerSupport"
+
+[start]
+# Nixpacks will also read railway.toml startCommand; keep in sync
+cmd = "java -Xms128m -Xmx512m -XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0 -Dserver.port=${PORT} -jar target/SharveshMart-1.0.0-SNAPSHOT.jar"

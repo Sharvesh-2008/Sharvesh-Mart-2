@@ -1,0 +1,15 @@
+target
+.git
+.github
+.idea
+.vscode
+.settings
+.classpath
+.project
+tools
+data
+*.log
+*.tmp
+.m2
+.codegraph
+.omo
